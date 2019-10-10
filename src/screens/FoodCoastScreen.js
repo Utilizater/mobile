@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 export default class FoodCoastScreen extends Component {
   static navigationOptions = {
-    title: 'Food Screen',
+    title: 'Food Screen'
   };
 
   render () {

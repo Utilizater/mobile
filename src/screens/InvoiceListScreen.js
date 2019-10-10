@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View, FlatList, StyleSheet } from 'react-native';
 import InvoiceItem from '../components/InvoiceItem';
 import RoundButton from '../components/RoundButton';
-import { Button } from 'react-native-elements';
 
 export default class InvoiceListScreen extends Component {
   static navigationOptions = {
@@ -23,15 +22,6 @@ export default class InvoiceListScreen extends Component {
         marginTop: 10,
         padding: 10,
         flex: 1
-      },
-      bottomButtons: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-      },
-      scanButtons: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginBottom: 5
       }
     });
 
@@ -44,21 +34,42 @@ export default class InvoiceListScreen extends Component {
           navigate = { navigation.navigate }/>}
           keyExtractor = { item => item.name } 
         />
-        <Button title = 'Menu' onPress={() => this.props.navigation.openDrawer()}/>
-        <View style = {styles.scanButtons}>
+        <View style = {{
+          position: 'absolute',
+          right: 25,
+          bottom: 100,
+          zIndex: 10
+        }}>
           <RoundButton 
             buttonType = "scan"
             navigate = {navigation.navigate}
-            navigation = {this.props.navigation}
             navigateTo = 'Scan'
           />
         </View>
-        <View style = {styles.bottomButtons}>
-          <RoundButton buttonType = "menu" navigate = {navigation.navigate} navigateTo = 'menu'/>
-          <RoundButton buttonType = "search"/>
-        </View>         
+        <View style = {{
+            position: 'absolute',
+            left: 25,
+            bottom: 25,
+            zIndex: 10
+          }}>
+          <RoundButton 
+            buttonType = "menu"
+            navigate = {navigation.navigate}
+            navigateTo = 'menu'
+            navigation = {navigation}
+          />
+        </View>
+        <View style = {{
+            position: 'absolute',
+            right: 25,
+            bottom: 25,
+            zIndex: 10
+          }}>
+          <RoundButton 
+            buttonType = "search"
+          />
+        </View>            
       </View>     
     );
   };
 }
-

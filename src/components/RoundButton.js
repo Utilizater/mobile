@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather, FontAwesome, Entypo, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const RoundButton = ({ buttonType, navigate, navigateTo, navigation }) => {
+const RoundButton = ({ buttonType, navigate, navigateTo, navigation, props }) => {
   
   const getElement = (buttonType) => {
     switch (buttonType) {
@@ -22,8 +22,9 @@ const RoundButton = ({ buttonType, navigate, navigateTo, navigation }) => {
   return (
     <TouchableOpacity
       onPress = {() => {
-        if (navigateTo === "menu")
-          navigation.openDrawer();  //I don't understand yet why it does not work
+        if (navigateTo === "menu") {
+        navigation.openDrawer();  
+        }
         else
           navigate(navigateTo)}
       }
